@@ -18,7 +18,7 @@ Route::get('/home',function(){
     return view('welcome');
 });
 
-Route::get('admin/index', ['as' => 'admin.index', 'middleware' => ['auth','menu'], 'uses'=>'Admin\\IndexController@index']);
+//Route::get('admin/index', ['as' => 'admin.index', 'middleware' => ['auth','menu'], 'uses'=>'Admin\IndexController@index']);
 
 $this->group(['namespace' => 'Admin','prefix' => '/admin',], function () {
     Route::auth();
@@ -27,6 +27,7 @@ $this->group(['namespace' => 'Admin','prefix' => '/admin',], function () {
 $router->group(['namespace' => 'Admin', 'middleware' => ['auth','authAdmin','menu']], function () {
     //权限管理路由
     Route::get('admin/permission/{cid}/create', ['as' => 'admin.permission.create', 'uses' => 'PermissionController@create']);
+    Route::get('admin/index', ['as' => 'admin.index', 'uses' => 'IndexController@index']);
     Route::get('admin/permission/{cid?}', ['as' => 'admin.permission.index', 'uses' => 'PermissionController@index']);
     Route::post('admin/permission/index', ['as' => 'admin.permission.index', 'uses' => 'PermissionController@index']); //查询
 

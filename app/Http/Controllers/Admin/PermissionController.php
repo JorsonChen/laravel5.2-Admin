@@ -66,7 +66,7 @@ class PermissionController extends Controller
         if ($cid > 0) {
             $datas['data'] = Permission::find($cid);
         }
-        return view('admin.Permission.index', $datas);
+        return view('admin.permission.index', $datas);
     }
 
     /**
@@ -81,7 +81,7 @@ class PermissionController extends Controller
             $data[$field] = old($field, $default);
         }
         $data['cid'] = $cid;
-        return view('admin.Permission.create', $data);
+        return view('admin.permission.create', $data);
     }
 
     /**
@@ -128,7 +128,7 @@ class PermissionController extends Controller
             $data[$field] = old($field, $permission->$field);
         }
         //dd($data);
-        return view('admin.Permission.edit', $data);
+        return view('admin.permission.edit', $data);
     }
 
     /**

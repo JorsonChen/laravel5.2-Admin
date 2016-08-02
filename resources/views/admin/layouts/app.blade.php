@@ -83,7 +83,7 @@
     {{-- <script src="{{ elixir('js/app.js') }}"></script> --}}
 
     {{--dataTabels--}}
-    <script src="/plugins/datatables/dataTables.dataTables.bootstrap.min.js"></script>
+    <script src="/plugins/datatables/dataTables.bootstrap.min.js"></script>
 
 </body>
 </html>
