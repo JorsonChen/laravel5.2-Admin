@@ -16,7 +16,8 @@ class GetMenu
     public function handle($request, Closure $next)
     {
         
-        view()->share('comData',$this->getMenu());
+        $menu = $this->getMenu();
+        view()->share('comData',$menu);
         return $next($request);
     }
 

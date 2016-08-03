@@ -5,6 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use Zizaco\Entrust\EntrustFacade as Entrust;
 use Route,URL,Auth;
+use App\Http\Middleware\GetMenu;
 
 class AuthenticateAdmin
 {
@@ -24,6 +25,7 @@ class AuthenticateAdmin
         }
 
         $previousUrl = URL::previous();
+        $comData = (new GetMenu())->getMenu();
         if(!Auth::guard('admin')->user()->can(Route::currentRouteName())) {
             if($request->ajax() && ($request->getMethod() != 'GET')) {
                 return response()->json([
@@ -32,7 +34,7 @@ class AuthenticateAdmin
                     'msg' => '您没有权限执行此操作'
                 ]);
             } else {
-                return response()->view('admin.errors.403', compact('previousUrl'));
+                return response()->view('admin.errors.403', compact('previousUrl','comData'));
             }
         }
 
